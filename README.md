@@ -1,5 +1,7 @@
 # YouTube Hidden Chats
 
+![YouTube Hidden Chats](banners/youtube-hidden-chats.png)
+
 Extensao Chrome (Manifest v3) que oculta o chat ao vivo do YouTube. Sempre ativa, sem configuracao.
 
 ## Instalar
