@@ -19,6 +19,10 @@ jobs:
           zip -r "youtube-hidden-chats-${GITHUB_REF_NAME}.zip" \
             manifest.json \
             hide.css \
+            background.js \
+            content.js \
+            options.html \
+            options.js \
             icons
 
       - name: Attach zip to release

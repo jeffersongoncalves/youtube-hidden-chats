@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <title>YouTube Hidden Chats - Canais</title>
+  <style>
+    body {
+      font-family: system-ui, sans-serif;
+      max-width: 640px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+      color: #0f0f0f;
+    }
+    h1 { font-size: 1.25rem; }
+    p.hint { color: #606060; font-size: 0.9rem; }
+    form {
+      display: flex;
+      gap: 0.5rem;
+      margin-bottom: 1.5rem;
+    }
+    form input {
+      flex: 1;
+      padding: 0.5rem;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    form button {
+      padding: 0.5rem 1rem;
+      border: none;
+      border-radius: 4px;
+      background: #065fd4;
+      color: #fff;
+      cursor: pointer;
+    }
+    table { width: 100%; border-collapse: collapse; }
+    th, td { text-align: left; padding: 0.5rem; border-bottom: 1px solid #eee; }
+    td.actions { text-align: right; white-space: nowrap; }
+    button.remove {
+      border: none;
+      background: none;
+      color: #c00;
+      cursor: pointer;
+    }
+    .empty { color: #888; font-style: italic; }
+    label.switch { display: inline-flex; align-items: center; gap: 0.4rem; }
+  </style>
+</head>
+<body>
+  <h1>YouTube Hidden Chats</h1>
+  <p class="hint">
+    Por padrao o chat ao vivo fica oculto em todos os canais. Marque "Mostrar chat"
+    para abrir excecao num canal especifico. Canais visitados sao listados aqui
+    automaticamente; tambem da pra adicionar pela URL ou @handle.
+  </p>
+
+  <form id="add-form">
+    <input id="add-input" type="text" placeholder="URL do canal, @handle ou ID (UC...)" required />
+    <button type="submit">Adicionar</button>
+  </form>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Canal</th>
+        <th>Mostrar chat</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody id="rows"></tbody>
+  </table>
+
+  <script src="options.js"></script>
+</body>
+</html>

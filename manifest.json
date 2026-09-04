@@ -1,8 +1,9 @@
 {
   "manifest_version": 3,
   "name": "YouTube Hidden Chats",
-  "version": "1.0.0",
-  "description": "Hides the YouTube live chat on video pages.",
+  "version": "1.1.0",
+  "description": "Hides the YouTube live chat on video pages, with per-channel exceptions.",
+  "permissions": ["storage"],
   "host_permissions": ["https://www.youtube.com/*"],
   "icons": {
     "16": "icons/icon16.png",
@@ -10,18 +11,30 @@
     "128": "icons/icon128.png"
   },
   "action": {
-    "default_title": "YouTube Hidden Chats",
+    "default_title": "YouTube Hidden Chats - gerenciar canais",
     "default_icon": {
       "16": "icons/icon16.png",
       "48": "icons/icon48.png",
       "128": "icons/icon128.png"
     }
   },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "options_ui": {
+    "page": "options.html",
+    "open_in_tab": true
+  },
   "content_scripts": [
     {
       "matches": ["https://www.youtube.com/*"],
       "css": ["hide.css"],
       "run_at": "document_start"
+    },
+    {
+      "matches": ["https://www.youtube.com/*"],
+      "js": ["content.js"],
+      "run_at": "document_idle"
     }
   ]
 }

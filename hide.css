@@ -1,30 +1,31 @@
-/* Oculta sempre o chat ao vivo do YouTube */
-ytd-live-chat-frame,
-#chat-container,
-#chat.ytd-watch-flexy,
-ytd-live-chat-frame#chat,
-#panels ytd-live-chat-frame {
+/* Oculta o chat ao vivo do YouTube, exceto quando o canal atual esta
+   na lista de excecoes (classe yhc-show-chat aplicada pelo content.js) */
+html:not(.yhc-show-chat) ytd-live-chat-frame,
+html:not(.yhc-show-chat) #chat-container,
+html:not(.yhc-show-chat) #chat.ytd-watch-flexy,
+html:not(.yhc-show-chat) ytd-live-chat-frame#chat,
+html:not(.yhc-show-chat) #panels ytd-live-chat-frame {
   display: none !important;
 }
 
 /* Botao "Mostrar chat" colapsado */
-ytd-watch-flexy[flexy] #chat[collapsed] {
+html:not(.yhc-show-chat) ytd-watch-flexy[flexy] #chat[collapsed] {
   display: none !important;
 }
 
 /* Container do painel fica vazio sem o chat -> remove o espaco */
-#panels-full-bleed-container.ytd-watch-flexy {
+html:not(.yhc-show-chat) #panels-full-bleed-container.ytd-watch-flexy {
   display: none !important;
 }
 
 /* Grid reserva padding-right pra coluna do chat -> zera */
-ytd-watch-flexy[fixed-panels] #columns.ytd-watch-flexy {
+html:not(.yhc-show-chat) ytd-watch-flexy[fixed-panels] #columns.ytd-watch-flexy {
   padding-right: 0 !important;
 }
 
 /* Card "Chat ao vivo / Abrir painel" na metadata abaixo do video */
-#teaser-carousel.ytd-watch-metadata,
-ytd-watch-metadata #teaser-carousel,
-yt-video-metadata-carousel-view-model {
+html:not(.yhc-show-chat) #teaser-carousel.ytd-watch-metadata,
+html:not(.yhc-show-chat) ytd-watch-metadata #teaser-carousel,
+html:not(.yhc-show-chat) yt-video-metadata-carousel-view-model {
   display: none !important;
 }
