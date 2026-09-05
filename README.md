@@ -4,39 +4,42 @@
 
 ![YouTube Hidden Chats](banners/youtube-hidden-chats.png)
 
-Extensao Chrome (Manifest v3) que oculta o chat ao vivo do YouTube por padrao,
-com excecao por canal.
+A Chrome extension (Manifest V3) that hides YouTube's live chat by default, with a
+per-channel exception list.
 
-## Instalar
+## How it works
 
-1. Abra `chrome://extensions`
-2. Ative **Modo desenvolvedor** (canto superior direito)
-3. Clique **Carregar sem compactacao**
-4. Selecione esta pasta
+`hide.css` is injected at `document_start` and hides the chat (`ytd-live-chat-frame`), its
+empty container, and the "Live chat" card in the metadata — except when the current channel
+is on the exception list.
 
-## Como funciona
+`content.js` identifies the channel of the current page (via `link[itemprop="channelId"]`),
+checks the saved exception in `chrome.storage.sync`, and applies the `yhc-show-chat` class on
+`<html>` when the chat should stay visible. It reacts to YouTube's SPA navigation
+(`yt-navigate-finish`) and to live storage changes.
 
-`hide.css` e injetado em `document_start` e esconde o chat (`ytd-live-chat-frame`),
-o container vazio e o card "Chat ao vivo" da metadata, exceto quando o canal
-atual esta na lista de excecoes.
+Clicking the extension icon opens the management page (`options.html`), where you can list
+channels already visited, add a channel manually (URL, `@handle`, or `UC...` ID), and toggle
+"Show chat" per channel.
 
-`content.js` identifica o canal da pagina (via `link[itemprop="channelId"]`),
-consulta a excecao salva em `chrome.storage.sync` e aplica a classe
-`yhc-show-chat` no `<html>` quando o chat deve ficar visivel. Reage a
-navegacao SPA do YouTube (`yt-navigate-finish`) e a mudancas de storage em
-tempo real.
+## Install (unpacked)
 
-Clicar no icone da extensao abre a pagina de gerenciamento (`options.html`),
-onde da pra listar os canais ja visitados, adicionar um canal manualmente
-(URL, `@handle` ou ID `UC...`) e alternar "Mostrar chat" por canal.
+1. Open `chrome://extensions`
+2. Enable **Developer mode** (top right)
+3. Click **Load unpacked**
+4. Select this folder
 
-## Arquivos
+## Files
 
-| Arquivo | Funcao |
+| File | Purpose |
 |---|---|
-| `manifest.json` | Config MV3 |
-| `hide.css` | Esconde o chat por padrao e ajusta o layout |
-| `content.js` | Detecta o canal e aplica/remove a excecao |
-| `background.js` | Abre a pagina de opcoes ao clicar no icone |
-| `options.html` / `options.js` | Pagina de gerenciamento de canais |
-| `icons/` | Icones 16/48/128 |
+| `manifest.json` | MV3 config |
+| `hide.css` | Hides the chat by default and adjusts the layout |
+| `content.js` | Detects the channel and applies/removes the exception |
+| `background.js` | Opens the options page on icon click |
+| `options.html` / `options.js` | Channel management page |
+| `icons/` | 16/48/128 icons |
+
+## License
+
+MIT
