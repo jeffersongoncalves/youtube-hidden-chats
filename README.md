@@ -1,8 +1,8 @@
+![YouTube Hidden Chats](banners/youtube-hidden-chats.png)
+
 # YouTube Hidden Chats
 
 [![Buy Me A Coffee](https://img.shields.io/badge/Buy%20Me%20A%20Coffee-support-FFDD00?style=flat-square&logo=buy-me-a-coffee&logoColor=black)](https://buymeacoffee.com/jeffersongoncalves)
-
-![YouTube Hidden Chats](banners/youtube-hidden-chats.png)
 
 A Chrome extension (Manifest V3) that hides YouTube's live chat by default, with a
 per-channel exception list.
